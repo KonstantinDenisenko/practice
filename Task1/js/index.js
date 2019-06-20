@@ -5,11 +5,16 @@ let $Person = document.getElementById('typePerson');
 let $Group = document.getElementById('typeGroup');
 let $btnPlus = document.getElementById('btnPlus');
 let $btnMinus = document.getElementById('btnMinus');
+let $inputCounter = document.getElementById('inputCounter');
 let $TotalPrice = document.getElementById('outputTotalPrice');
 
 const month = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
 const saturday = 5;
 const sunday = 6;
+const minimumYear = 2009;
+let currency = " грн.";
+let finalCost;
+let fixedFinalCost;
 let individualPrice = {
     weeksDay: 50,
     weekend: 75
@@ -19,68 +24,97 @@ let groupPrice = {
     weekend: 70
 };
 
-month.forEach( (value, index) => {
-    let option = document.createElement('option');
-    option.innerHTML = value;
-    option.value = index + 1;
-    $Month.appendChild(option);
-});
-
 let date = new Date();
 let currentDate = date.getFullYear();
 
-for(currentDate; currentDate > 2010; currentDate--) {
+for(currentDate; currentDate > minimumYear; currentDate--) {
     let option = document.createElement('option');
     option.innerHTML = currentDate;
     $Year.appendChild(option);
 };
 
-$Month.onchange =  () => {
-    checkNumDays();
-};
+month.forEach( (value, index) => {
+    let option = document.createElement('option');
+    option.innerHTML = value;
+    option.value = index;
+    $Month.appendChild(option);
+});
 
-$Year.onchange =  () => {
-    checkNumDays();
-};
+createDays();
 
-$Date.onchange =  () => {
-    checkDayOfWeek($Date.value);
-};
+function createDays() {
+    $Date.innerHTML = "";
+    let numDaysOfMonth = new Date($Year.value, +$Month.value + 1, 0);
 
-function checkNumDays() {
-    let numDaysOfMonth = new Date($Year.value, $Month.value, 0);
-
-    createDays(numDaysOfMonth.getDate());
-
-    console.log(numDaysOfMonth);
-};
-
-function createDays(dayOfMonth) {
-    for(let a = 1; a < dayOfMonth + 1; a++) {
+    for(let a = 1; a < numDaysOfMonth.getDate() + 1; a++) {
         let option = document.createElement('option');
         option.innerHTML = a;
         $Date.appendChild(option);
     };
 };
 
-function checkDayOfWeek(selectedDay) {
-    let numDaysOfMonth = new Date($Year.value, $Month.value, selectedDay);
+$Date.onchange =  () => {
+    checkDayOfWeek();
+};
+
+$Month.onchange =  () => {
+    checkDayOfWeek();
+    createDays();
+};
+
+$Year.onchange =  () => {
+    checkDayOfWeek();
+    createDays();
+};
+
+$Person.addEventListener('click', () => {
+    checkDayOfWeek();
+});
+
+$Group.addEventListener('click', () => {
+    checkDayOfWeek();
+});
+
+checkDayOfWeek();
+
+function checkDayOfWeek() {
+    $inputCounter.value = 1;
+    let numDaysOfMonth = new Date($Year.value, $Month.value, $Date.value);
     let utsDayOfWeek = numDaysOfMonth.getUTCDay();
 
     if(utsDayOfWeek === saturday || utsDayOfWeek === sunday) {
-        checkGroupOrIndividualPrice();
+        checkGroupOrIndividualPrice(individualPrice.weekend, groupPrice.weekend);
     } else {
-
+        checkGroupOrIndividualPrice(individualPrice.weeksDay, groupPrice.weeksDay);
     }
-
-    console.log(numDaysOfMonth.getUTCDay());
 };
 
-function checkGroupOrIndividualPrice() {
+function checkGroupOrIndividualPrice(individualPrice, groupPrice) {
     if($Person.checked){
-        $TotalPrice.innerHTML = individualPrice.weekend;
+        finalCost = individualPrice;
+        fixedFinalCost = individualPrice;
+        setFinalCost(individualPrice);
     } else if($Group.checked) {
-        $TotalPrice.innerHTML = individualPrice.weeksDay;
+        finalCost = groupPrice;
+        fixedFinalCost = groupPrice;
+        setFinalCost(groupPrice);
     }
 };
 
+$btnPlus.addEventListener('click', () => {
+    ++$inputCounter.value;
+    finalCost += fixedFinalCost;
+    setFinalCost(finalCost);
+});
+
+$btnMinus.addEventListener('click', () => {
+    if($inputCounter.value > 1) {
+        $inputCounter.value--;
+        finalCost -= fixedFinalCost;
+    }
+    setFinalCost(finalCost);
+});
+
+function setFinalCost(price) {
+    $TotalPrice.innerHTML = price + currency;
+};
