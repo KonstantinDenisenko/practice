@@ -16,6 +16,7 @@ function Form() {
     this.minimumYear = 2009;
     this.currency = " грн.";
     this.monthsStr = "";
+    this.daysStr = "";
     this.finalCost = "";
     this.fixedFinalCost = "";
     this.individualPrice = {
@@ -31,10 +32,9 @@ function Form() {
     this.currentDate = this.dateOfYear.getFullYear();
 
     for(this.currentDate; this.currentDate > this.minimumYear; this.currentDate--) {
-        this.option = document.createElement('option');
-        this.option.innerHTML = this.currentDate;
-        this.year.appendChild(this.option);
+        this.daysStr += `<option>${this.currentDate}</option>`;
     };
+    this.year.innerHTML = this.daysStr;
 
     for(let a = 0; a < this.months.length; a++) {
         this.monthsStr += `<option value='${a}'>${this.months[a]}</option>`;
