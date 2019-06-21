@@ -52,7 +52,6 @@ function Form() {
         };
     };
 
-
     this.events = () => {
         this.btnPlus.addEventListener('click', this.additionPrice);
         this.btnMinus.addEventListener('click', this.subtractionPrice);
@@ -69,7 +68,6 @@ function Form() {
         this.group.addEventListener('click', this.checkDayOfWeek);
     };
 
-
     this.checkDayOfWeek = () => {
         this.inputCounter.value = 1;
         this.numDaysOfMonth = new Date(this.year.value, this.month.value, this.date.value);
@@ -81,7 +79,6 @@ function Form() {
             this.checkGroupOrIndividualPrice(this.individualPrice.weeksDay, this.groupPrice.weeksDay);
         }
     };
-
 
     this.checkGroupOrIndividualPrice = (individualPrice, groupPrice) => {
         if(this.person.checked){

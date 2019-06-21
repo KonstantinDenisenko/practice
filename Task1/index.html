@@ -57,13 +57,13 @@
                 <tr class="person_row">
                     <td>Индивидуальная</td>
                     <!--класс .current_ используйте для подчеркивания текущей цены-->
-                    <td class="current_ weekday_">50</td>
-                    <td class="weekend_">75</td>
+                    <td id="personPriceWeeksday" class="current_ weekday_"></td>
+                    <td id="personPriceWeekend" class="weekend_"></td>
                 </tr>
                 <tr class="group_row">
                     <td>Групповая</td>
-                    <td class="weekday_">45</td>
-                    <td class="weekend_">70</td>
+                    <td id="groupPriceWeeksday" class="weekday_"></td>
+                    <td id="groupPriceWeekend" class="weekend_"></td>
                 </tr>
                 </tbody>
             </table>
@@ -96,7 +96,8 @@
 
     </fieldset>
 </form>
-<!--<script src="js/index.js"></script>-->
-<script src="js/class.js"></script>
+<!--<script src="js/index.js"></script>
+<script src="js/class.js"></script>-->
+<script src="js/classES6.js"></script>
 
 </body>
