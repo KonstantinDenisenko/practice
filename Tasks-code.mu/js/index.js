@@ -131,7 +131,7 @@
 
     // ////////////////////////////////////////////////////////
     // //16
-    
+
     // let num = "1s23d45";
     // let sum = 1;
     //
@@ -830,7 +830,236 @@
     // console.log(arr);
 
     ///////////////////////////////////////////////////
-    // //63
+    // //63     Class
+
+    // class User {
+    //     constructor(a, b) {
+    //         this.firstName = "Vasya";
+    //         this.lastName = "Pypkin";
+    //         this.a = a;
+    //         this.b = b;
+    //     }
+    //
+    //     get fullName() {
+    //         return `${this.a} ${this.b}`;
+    //     }
+    //
+    //     set fullName(newValue) {
+    //         if(typeof newValue === "string") {
+    //             [this.a, this.b] = newValue.split(" ");
+    //         }else {
+    //             [this.a, this.b] = newValue;
+    //         }
+    //     }
+    //
+    //     ["test".toUpperCase()]() {
+    //         console.log("PASSED!");
+    //     }
+    // };
+    // let user = new User("Вася", "Пупков");
+    // console.log( user.fullName );
+    // user.fullName = ["Иван", "Петров"];
+    // console.log( user.fullName );
+    // user.fullName = "Другой Персонаж";
+    // console.log( user.fullName );
+    // user.TEST();
+    //
+    // class Test extends User {
+    //     constructor(a, b) {
+    //         super(a, b);
+    //         this.firstName = "Petia";
+    //         this.lastName = "Petrovich";
+    //     }
+    //     someMethod() {
+    //         console.log(`${this.firstName} ${this.lastName}`)
+    //     }
+    // };
+    //
+    // let test = new Test('firstName', 'lastName');
+    // console.log(test.fullName);
+    // test.someMethod();
+
+    ///////////////////////////////////////////////////
+    // //64    bind
+
+    // function bind(func, context) {
+    //     return function() {
+    //         return func.apply(context);
+    //     };
+    // }
+
+    // let user = {
+    //     firstName: "Вася",
+    //     sayHi() {
+    //         console.log( this.firstName );
+    //     }
+    // };
+    //
+    // //setTimeout(bind(user.sayHi, user), 1000);
+    // setTimeout(user.sayHi.bind(user), 1000);
+
+    ///////////////////////////////////////////////////
+    // //65  Функция - Декоратор
+
+    // let array = [];
+    //
+    // function unknown(prop) {
+    //     console.log(`Число вернулось с wrapper ${prop}`);
+    //     return "hello";
+    // };
+    //
+    // function wrapper(someFunc, array) {
+    //
+    //     return (a) => {
+    //         array.push(a);
+    //         return someFunc.call(this, a);
+    //     }
+    // };
+    //
+    // unknown = wrapper(unknown, array);
+    //
+    // unknown(1);
+    // unknown(2);
+    // unknown(3);
+    //
+    // let somethingReturn = unknown(4);
+    //
+    // console.log(array);
+    // console.log(somethingReturn);
+
+    ///////////////////////////////////////////////////
+    // //66 try catch
+
+    // try {
+    //     setTimeout(function() {
+    //         throw new Error(); // вылетит в консоль
+    //     }, 1000);
+    // } catch (e) {
+    //     alert( "не сработает" );
+    // }
+
+    //---------------------------------------------------------------------------
+
+    // let data = '{"name": 8}';
+    //
+    // try {
+    //     let user = JSON.parse(data);
+    //     throw new Error("Thiss is massage erroRRRRRRRRRRRRR");
+    //
+    //     alert( user.name );
+    //
+    // } catch (e) {
+    //     console.log( "Извините, в данных ошибка, мы попробуем получить их ещё раз" );
+    //     console.log( e.name );
+    //     console.log( e.message );
+    // }
+
+    // let data = '{ "name": "Вася", "age": 30 }'; // данные корректны
+    //
+    // try {
+    //
+    //     let user = JSON.parse(data);
+    //
+    //     if (!user.name) {
+    //         throw new SyntaxError("Ошибка в данных");
+    //     }
+    //
+    //     //blabla(); // произошла непредусмотренная ошибка
+    //
+    //     console.log( user.name );
+    //
+    // } catch (e) {
+    //
+    //     if (e.name != "SyntaxError") {
+    //         console.log( e.message );
+    //     } else {
+    //         throw e;
+    //
+    //     }
+    //
+    // }
+
+
+    ///////////////////////////////////////////////////
+    // //67  pop() - push() - shift() - unshift() - slice() - splice() - sort() -Object.keys()
+
+    let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    console.log(array.shift()); //1
+    console.log(array.unshift('a', "b", "c")); //11 - новая длина массива
+    console.log(array.pop());//9
+    console.log(array.reverse());
+    console.log(array.slice(0,5));
+
+
+    let array1 = [1, 2, 3, 4, 5];
+    array1.splice(1,2);
+    console.log(array1);
+
+    let array2 = [1, 2, 3, 4, 5];
+    array2.splice(5,0, 2,3,4);
+    console.log(array2);
+
+    let array3 = [1, 2, 3, 4, 5];
+    array3.splice(3,0, 'a','b','c');
+    console.log(array3);
+
+    let array4 = [1, 2, 3, 4, 5];
+    array4.splice(1,0, 'a','b');
+    array4.splice(6,0, 'c');
+    array4.splice(8,0, 'e');
+    console.log(array4);
+
+    //-----------------------------------------------------------------------------
+
+    function sortArr(a,b){
+        if(a > b)
+            return 1;
+        if(a < b)
+            return -1;
+        if(a==b)
+            return 0 ;
+    }
+
+    let array5 = [3, 4, 1, 2, 7];
+    console.log(array5.sort(sortArr));
+
+
+    var obj = {a: 1, b: 2, c: 3};
+    console.log(Object.keys(obj));
+
+    //-----------------------------------------------------------------------------
+
+    let obj1 = {
+        'name': 'Bob',
+        "lastName": 'Michelin',
+        "age": 3
+    };
+    console.log(Object.keys(obj1));
+
+    //-----------------------------------------------------------------------------
+
+    let str1 = 'hello';
+    str1 = str1[0].toUpperCase() + str1.substr(1);
+    console.log(str1);
+
+    let str2 = '123456';
+    result = str2.split('').reverse().join('');
+    console.log(result);
+
+    let str3 = 'http://phphtml';
+    if (str3.substr(0, 7) == 'http://') {
+        console.log('Да');
+    } else {
+        console.log('Нет');
+    }
+
+    let str4 = 'index.html';
+    if (str4.substr(-5) == '.html') {
+        console.log('Да');
+    } else {
+        console.log('Нет');
+    }
 
 
 
