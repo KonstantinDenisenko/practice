@@ -983,83 +983,423 @@
     ///////////////////////////////////////////////////
     // //67  pop() - push() - shift() - unshift() - slice() - splice() - sort() -Object.keys()
 
-    let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-    console.log(array.shift()); //1
-    console.log(array.unshift('a', "b", "c")); //11 - новая длина массива
-    console.log(array.pop());//9
-    console.log(array.reverse());
-    console.log(array.slice(0,5));
-
-
-    let array1 = [1, 2, 3, 4, 5];
-    array1.splice(1,2);
-    console.log(array1);
-
-    let array2 = [1, 2, 3, 4, 5];
-    array2.splice(5,0, 2,3,4);
-    console.log(array2);
-
-    let array3 = [1, 2, 3, 4, 5];
-    array3.splice(3,0, 'a','b','c');
-    console.log(array3);
-
-    let array4 = [1, 2, 3, 4, 5];
-    array4.splice(1,0, 'a','b');
-    array4.splice(6,0, 'c');
-    array4.splice(8,0, 'e');
-    console.log(array4);
-
-    //-----------------------------------------------------------------------------
-
-    function sortArr(a,b){
-        if(a > b)
-            return 1;
-        if(a < b)
-            return -1;
-        if(a==b)
-            return 0 ;
-    }
-
-    let array5 = [3, 4, 1, 2, 7];
-    console.log(array5.sort(sortArr));
-
-
-    var obj = {a: 1, b: 2, c: 3};
-    console.log(Object.keys(obj));
+    // let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    //
+    // console.log(array.shift()); //1
+    // console.log(array.unshift('a', "b", "c")); //11 - новая длина массива
+    // console.log(array.pop());//9
+    // console.log(array.reverse());
+    // console.log(array.slice(0,5));
+    //
+    //
+    // let array1 = [1, 2, 3, 4, 5];
+    // array1.splice(1,2);
+    // console.log(array1);
+    //
+    // let array2 = [1, 2, 3, 4, 5];
+    // array2.splice(5,0, 2,3,4);
+    // console.log(array2);
+    //
+    // let array3 = [1, 2, 3, 4, 5];
+    // array3.splice(3,0, 'a','b','c');
+    // console.log(array3);
+    //
+    // let array4 = [1, 2, 3, 4, 5];
+    // array4.splice(1,0, 'a','b');
+    // array4.splice(6,0, 'c');
+    // array4.splice(8,0, 'e');
+    // console.log(array4);
 
     //-----------------------------------------------------------------------------
 
-    let obj1 = {
-        'name': 'Bob',
-        "lastName": 'Michelin',
-        "age": 3
+    // function sortArr(a,b){
+    //     if(a > b)
+    //         return 1;
+    //     if(a < b)
+    //         return -1;
+    //     if(a==b)
+    //         return 0 ;
+    // }
+    //
+    // let array5 = [3, 4, 1, 2, 7];
+    // console.log(array5.sort(sortArr));
+    //
+    //
+    // var obj = {a: 1, b: 2, c: 3};
+    // console.log(Object.keys(obj));
+    //
+    // //-----------------------------------------------------------------------------
+    //
+    // let obj1 = {
+    //     'name': 'Bob',
+    //     "lastName": 'Michelin',
+    //     "age": 3
+    // };
+    // console.log(Object.keys(obj1));
+
+    //-----------------------------------------------------------------------------
+
+    // let str1 = 'hello';
+    // str1 = str1[0].toUpperCase() + str1.substr(1);
+    // console.log(str1);
+    //
+    // let str2 = '123456';
+    // result = str2.split('').reverse().join('');
+    // console.log(result);
+    //
+    // let str3 = 'http://phphtml';
+    // if (str3.substr(0, 7) == 'http://') {
+    //     console.log('Да');
+    // } else {
+    //     console.log('Нет');
+    // }
+    //
+    // let str4 = 'index.html';
+    // if (str4.substr(-5) == '.html') {
+    //     console.log('Да');
+    // } else {
+    //     console.log('Нет');
+    // }
+
+    // ///////////////////////////////////////////////
+    // 68-71
+
+    // 1.Сделайте функцию, которая возвращает квадрат числа. Число передается параметром.
+    //
+    // 2.Сделайте функцию, которая возвращает сумму двух чисел.
+    //
+    // 3.Сделайте функцию, которая отнимает от первого числа второе и делит на третье.
+    //
+    // 4.Сделайте функцию, которая принимает параметром число от 1 до 7, а возвращает день недели на русском языке.
+
+    //1
+    // function squareOfNumber(num) {
+    //     return num * num;
+    // };
+    // console.log(squareOfNumber(5));
+    //
+    // //2
+    // function sum(num1, num2) {
+    //     return num1 + num2;
+    // };
+    // console.log(sum(5, 5));
+    //
+    // //3
+    // function sum1(num1, num2, num3) {
+    //     return (num1 - num2) / num3;
+    // };
+    // console.log(sum1(12, 2, 2.5));
+    //
+    // //4
+    // function returnDayOfWeek(datOfWeekUtc) {
+    //     const daysOfWeek= ["Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота", "Воскресенье"];
+    //
+    //     switch (datOfWeekUtc) {
+    //         case 1:
+    //             return daysOfWeek[0];
+    //             break;
+    //         case 2:
+    //             return daysOfWeek[1];
+    //             break;
+    //         case 3:
+    //             return daysOfWeek[2];
+    //             break;
+    //         case 4:
+    //             return daysOfWeek[3];
+    //             break;
+    //         case 5:
+    //             return daysOfWeek[4];
+    //             break;
+    //         case 6:
+    //             return daysOfWeek[5];
+    //             break;
+    //         case 7:
+    //             return daysOfWeek[6];
+    //             break;
+    //     }
+    // };
+    // console.log(returnDayOfWeek(5));
+
+    // ///////////////////////////////////////////////
+    // 72-74
+
+    // 1.Дан массив с числами. Проверьте, что в этом массиве есть число 5. Если есть - выведите 'да',
+    //     а если нет - выведите 'нет'.
+    //
+    // 2.Дано число, например 31. Проверьте, что это число не делится ни на одно другое число
+    // кроме себя самого и единицы. То есть в нашем случае нужно проверить, что число 31 не
+    // делится на все числа от 2 до 30. Если число не делится - выведите 'false',
+    //     а если делится - выведите 'true'.
+    //
+    // 3.Дан массив с числами. Проверьте, есть ли в нем два одинаковых числа подряд.
+    //     Если есть - выведите 'да', а если нет - выведите 'нет'.
+
+    ////1
+    // let array = [1,2,3,4,5,6,7,8];
+    //
+    // function checkNumber(array) {
+    //     if (array.join('').indexOf("5") === -1) {
+    //         console.log("No");
+    //     } else {
+    //         console.log("YES");
+    //     }
+    // };
+    // checkNumber(array);
+    
+    // //2
+    // let start = 2;
+    // let end = 30;
+    //
+    // function checkDivision(num) {
+    //     for(start; start <= end; start++ ) {
+    //         if(num % start === 0) {
+    //             console.log('YES');
+    //         }else {
+    //             console.log('NO');
+    //         }
+    //     }
+    // };
+    // checkDivision(31);
+
+    // //3
+    // let array = [1,1,2,3,3,4,5,6,7,7,8];
+    //
+    // function checkTheSameNum(array) {
+    //      return array.sort( (a, b) => {
+    //         if(a === b)
+    //             console.log('YES');
+    //     });
+    // };
+    // console.log(checkTheSameNum(array));
+
+    // ///////////////////////////////////////////////
+    // 75-77
+
+    // 1.Сделайте функцию, которая параметрами принимает 2 числа.
+    //     Если эти числа равны - пусть функция вернет true, а если не равны - false.
+    //
+    // 2.Сделайте функцию, которая параметрами принимает 2 числа.
+    //     Если их сумма больше 10 - пусть функция вернет true, а если нет - false.
+    //
+    // 3.Сделайте функцию, которая параметром принимает число и проверяет - отрицательное оно или нет.
+    //     Если отрицательное - пусть функция вернет true, а если нет - false.
+
+    // //1
+    // function checkTwoNum(a, b) {
+    //     if(a === b) return true;
+    //     return false;
+    // };
+    //
+    // console.log(checkTwoNum(5, 5));
+
+    // //2
+    // function checkTwoNum(a, b) {
+    //     if(a + b > 10) return true;
+    //     return false;
+    // };
+    //
+    // console.log(checkTwoNum(5, 10));
+
+    // //3
+    // function checkTwoNum(a) {
+    //     if(a < 0) return true;
+    //     return false;
+    // };
+    //
+    // console.log(checkTwoNum(-1));
+
+    // ///////////////////////////////////////////////
+    // 78-81
+
+    // 1.Заполните массив следующим образом: в первый элемент запишите 'x',
+    //     во второй 'xx', в третий 'xxx' и так далее.
+    //
+    // 2.Заполните массив следующим образом: в первый элемент запишите '1',
+    //     во второй '22', в третий '333' и так далее.
+    //
+    // 3.Дан массив с числами. Узнайте сколько элементов с начала массива надо сложить,
+    //     чтобы в сумме получилось больше 10-ти.
+    //
+    // 4. Дан двухмерный массив с числами, например [[1, 2, 3], [4, 5], [6]].
+    //     Найдите сумму элементов этого массива. Массив, конечно же, может быть произвольным.
+
+    // //1
+    // let array = [],
+    //     str ='';
+    // for(let i = 0; i < 10; i++) {
+    //     str += 'x';
+    //     array.push(str);
+    //     console.log(array);
+    // }
+
+    // //2
+    // str = '';
+    // arr = [];
+    // for(let i = 1; i < 10; i++) {
+    //     for(let j = 1; j <= i; j++) {
+    //         str += i
+    //     }
+    //     arr.push(str);
+    //     str = '';
+    // }
+    // console.log(arr);
+
+    //3
+    // let array = [3,5,5,1,1,1,5,6,7,8];
+    //
+    // function checkSUM(array) {
+    //     let sum = 0;
+    //     let quantity = 0;
+    //
+    //   for(let a = 0; a < array.length; a++) {
+    //       sum += array[a];
+    //       quantity++;
+    //       if(sum > 10) {
+    //           console.log(quantity);
+    //           break;
+    //       }
+    //   }
+    //   console.log(
+    //       `Нужно сложить ${quantity} первых элемонта(ов) массива,
+    //       чтобы получить число больше 10 -
+    //        это число равняется ${sum}`
+    //   );
+    // };
+    // checkSUM(array);
+
+    //4
+    // let array = [[1, 2, 3], [4, 5], [6]];
+    // let sum = 0;
+    //
+    // for (var i = 0; i < array.length; i++) {
+    //     for (var j = 0; j < array[i].length; j++) {
+    //         sum += array[i][j];
+    //     }
+    // }
+    // console.log(sum);
+
+    // ///////////////////////////////////////////////
+    // 82-
+
+    // 1.Дан массив с числами. Создайте из него новый массив, где останутся лежать только положительные числа.
+    //     Создайте для этого вспомогательную функцию isPositive(),
+    //     которая параметром будет принимать число и возвращать true,
+    //     если число положительное, и false - если отрицательное.
+    //
+    // 2.Дан массив с числами. Запишите в новый массив только те числа,
+    //     которые больше нуля и меньше 10-ти. Для этого используйте вспомогательную функцию
+    //     isNumberInRange из предыдущей задачи.
+    //
+    // 3.Сделайте функцию getDigitsSum (digit - это цифра),
+    //     которая параметром принимает целое число и возвращает сумму его цифр.
+    //
+    // 4.Найдите все года от 1 до 2019, сумма цифр которых равна 13.
+    //     Для этого используйте вспомогательную функцию getDigitsSum из предыдущей задачи.
+    //
+    // 5.Сделайте функцию isEven() (even - это четный),
+    //     которая параметром принимает целое число и проверяет: четное оно или нет.
+    //     Если четное - пусть функция возвращает true, если нечетное - false.
+    //
+    // 6. Дан массив с целыми числами. Создайте из него новый массив, где останутся лежать только четные из этих чисел.
+    //     Для этого используйте вспомогательную функцию isEven из предыдущей задачи.
+    //
+    // 7. Сделайте функцию getDivisors, которая параметром принимает число и возвращает массив
+    //      его делителей (чисел, на которое делится данное число).
+
+    // //1
+    // let array = [1, 2, 3, -1, -2, -3];
+    //
+    // function isPositive(num) {
+    //     if (num >=0) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+    //
+    // let newArray = [];
+    // for (var i = 0; i <= array.length; i++) {
+    //     if (isPositive(array[i])) {
+    //         newArray.push(array[i]);
+    //     }
+    // }
+    //
+    // console.log(newArray);
+
+    // //2
+    // let array = [8,2,3,2,5,6,7,8,9,10,11,12,7,14,5];
+    // let newArray =[];
+    //
+    // function isNumberInRange(num) {
+    //     if(num > 0 &&  num < 10) {
+    //         return true;
+    //     }else {
+    //         return false;
+    //     }
+    // };
+    //
+    // array.forEach((e) => {
+    //     if(isNumberInRange(e)) {
+    //         newArray.push(e);
+    //     }
+    // });
+    // console.log(newArray);
+
+    // //3
+    // function getDigitsSum(num) {
+    //     let arrayNum = String(num).split("");
+    //     let sum = 0;
+    //
+    //     for (let a = 0; a < arrayNum.length; a++) {
+    //         sum += +arrayNum[a];
+    //     }
+    //     return sum;
+    // };
+    // console.log(getDigitsSum(2019));
+    //
+    // //4
+    // let currentYear = 2019;
+    // let setNum = 13;
+    //
+    // for(let a = 1; a < currentYear; a++) {
+    //     if(getDigitsSum(a) === setNum) {
+    //         console.log(a);
+    //     }
+    // }
+
+    //5
+    // function isEven(num) {
+    //     if(num % 2 === 0) {
+    //         return true;
+    //     }else {
+    //         return false;
+    //     }
+    // };
+    // console.log(isEven(6));
+    //
+    // //6
+    // let array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+    // let newArray = [];
+    //
+    // for (let a = 0; a < array.length; a++) {
+    //     if(isEven(array[a])) {
+    //         newArray.push(array[a]);
+    //     }
+    // };
+    // console.log(newArray);
+
+    //7
+    function getDivisors(num) {
+        let array = [];
+        for(let a = 0; a <= num; a++) {
+            if(num % a === 0) {
+                array.push(a);
+            }
+        }
+        return array;
     };
-    console.log(Object.keys(obj1));
+    console.log(getDivisors(100));
 
-    //-----------------------------------------------------------------------------
-
-    let str1 = 'hello';
-    str1 = str1[0].toUpperCase() + str1.substr(1);
-    console.log(str1);
-
-    let str2 = '123456';
-    result = str2.split('').reverse().join('');
-    console.log(result);
-
-    let str3 = 'http://phphtml';
-    if (str3.substr(0, 7) == 'http://') {
-        console.log('Да');
-    } else {
-        console.log('Нет');
-    }
-
-    let str4 = 'index.html';
-    if (str4.substr(-5) == '.html') {
-        console.log('Да');
-    } else {
-        console.log('Нет');
-    }
 
 
 
